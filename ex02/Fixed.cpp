@@ -6,14 +6,14 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:09:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/12 10:56:12 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/14 13:38:03 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
 
-Fixed::Fixed() {
+Fixed::Fixed(): PointValue(0) {
     std::cout << "Default constructor called" << std::endl;
 }
 
@@ -74,4 +74,96 @@ void Fixed::setRawBits(int const newValue) {
 std::ostream& operator<<(std::ostream& out,const Fixed& fixed){
     out << fixed.toFloat();
     return out;
+}
+
+// Operators:
+bool Fixed::operator>(const Fixed& other) const{
+    return PointValue > other.PointValue;
+}
+
+bool Fixed::operator<(const Fixed& other) const{
+    return PointValue < other.PointValue;
+}
+bool Fixed::operator>=(const Fixed& other) const{
+    return PointValue >= other.PointValue;
+}
+
+bool Fixed::operator<=(const Fixed& other) const{
+    return PointValue <= other.PointValue;
+}
+
+bool Fixed::operator==(const Fixed& other) const{
+    return PointValue == other.PointValue;
+}
+
+bool Fixed::operator!=(const Fixed& other) const {
+    return PointValue != other.PointValue;
+}
+
+
+// operators::
+
+Fixed Fixed::operator+(const Fixed& other) const{
+    Fixed result;
+    result.PointValue = this->PointValue + other.PointValue;
+    return result;
+}
+
+Fixed Fixed::operator-(const Fixed& other) const{
+    Fixed result;
+    result.PointValue = this->PointValue - other.PointValue;
+    return result;
+}
+
+Fixed Fixed::operator*(const Fixed& other) const{
+    Fixed result;
+    result.PointValue = (static_cast<long long>(this->PointValue) * other.PointValue) >> fractionalBits;
+    return result;
+}
+
+Fixed Fixed::operator/(const Fixed& other) const{
+    Fixed result;
+    result.PointValue = (static_cast<long long>(this->PointValue) << fractionalBits) / other.PointValue;
+    return result;
+}
+
+
+// Increment and decrement
+Fixed& Fixed::operator++(void){
+    ++PointValue; // Increment by the smallest representable value.
+    return *this;
+}
+Fixed Fixed::operator++(int){
+    Fixed temp; // Save current value.
+    temp.PointValue = this->PointValue;
+    ++PointValue; // Increment current value.
+    return temp; 
+}
+Fixed& Fixed::operator--(void){
+    --PointValue; // Decrement
+    return *this;
+}
+Fixed Fixed::operator--(int){
+    Fixed temp; //Save current value
+    temp.PointValue = this->PointValue;
+    --PointValue;
+    return temp;
+}
+
+
+// Static min/max function for non-const references
+Fixed& Fixed::max(Fixed& a, Fixed& b){
+    return (a > b) ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b){
+    return (a > b) ? a : b;
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b){
+    return (a < b) ? a : b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b){
+    return (a < b) ? a : b;
 }

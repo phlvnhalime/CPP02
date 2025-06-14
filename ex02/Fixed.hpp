@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 19:45:40 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/12 12:35:18 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/14 13:29:44 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Fixed{
         int getRawBits(void) const;
         void setRawBits(int const newValue);
 
-        // comparison operators:
+        // comparison operators: Must be 6
         bool operator>(const Fixed& other) const;
         bool operator<(const Fixed& other) const;
         bool operator>=(const Fixed& other) const;
@@ -47,13 +47,24 @@ class Fixed{
         bool operator==(const Fixed& other) const;
         bool operator!=(const Fixed& other) const;
 
-        // Operators:
+        // Operators: Must be 4
         Fixed operator+(const Fixed& other) const;
         Fixed operator-(const Fixed& other) const;
         Fixed operator*(const Fixed& other) const;
         Fixed operator/(const Fixed& other) const;
 
-        // 
+        // Static functions min/max function
+        static Fixed& min(Fixed&a, Fixed& b);
+        static const Fixed& min(const Fixed& a, const Fixed& b);
+        static Fixed& max(Fixed&a, Fixed& b);
+        static const Fixed& max(const Fixed& a, const Fixed& b);
+
+        // Pre-Increment Post-Increment pre-decrement and post-decrement
+        Fixed& operator++(void);
+        Fixed operator++(int);
+        Fixed& operator--(void);
+        Fixed operator--(int);
+        
 };
 
 // represents an output stream!
