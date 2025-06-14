@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:09:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/12 09:35:30 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/12 10:26:04 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ Fixed::Fixed(): PointValue(0) {
 
 Fixed::Fixed(const Fixed& copy) : PointValue(copy.PointValue){
     std::cout << "Copy constructor called" << std::endl;
+    *this = copy;
 }
 
 // Copy assignment operator is like:
