@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:09:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/14 14:01:36 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:11:35 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int Fixed::getRawBits(void) const{
 void Fixed::setRawBits(int const newValue) {
     this->PointValue = newValue;
 }
-
+// Output stream objects can write sequences of characters and represent other kinds of data
 std::ostream& operator<<(std::ostream& out,const Fixed& fixed){
     out << fixed.toFloat();
     return out;
