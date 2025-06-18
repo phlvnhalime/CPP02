@@ -6,7 +6,7 @@
 #    By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/12 09:35:53 by hpehliva          #+#    #+#              #
-#    Updated: 2025/06/12 09:37:23 by hpehliva         ###   ########.fr        #
+#    Updated: 2025/06/18 15:44:23 by hpehliva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXX = c++
 
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
 
-SRCS= main.cpp Fixed.cpp
+SRCS= main.cpp Fixed.cpp bsp.cpp Point.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

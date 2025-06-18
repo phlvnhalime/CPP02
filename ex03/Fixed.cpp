@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:09:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/17 12:11:35 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:46:56 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 #include <cmath>
 
 Fixed::Fixed(): PointValue(0) {
-    std::cout << "Default constructor called" << std::endl;
+    // std::cout << "Default constructor called" << std::endl;
 }
 
 // For integer constructor function.
 Fixed::Fixed(const int value) {
-    std::cout << "Int constructor called" << std::endl;
+    // std::cout << "Int constructor called" << std::endl;
     PointValue = value << fractionalBits;
 }
 
 // Float constructor.
 Fixed::Fixed(const float value) {
-    std::cout << "Float constructor called" << std::endl;
+    // std::cout << "Float constructor called" << std::endl;
     PointValue = roundf(value * (1 << fractionalBits));
 }
 
 Fixed::Fixed(const Fixed& copy) : PointValue(copy.PointValue){
-    std::cout << "Copy constructor called" << std::endl;
+    // std::cout << "Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator is like:
 // You already existed, but now a new piece of information has arrived, let's load it up on you! 
 Fixed& Fixed::operator=(const Fixed& copy) {
-    std::cout << "Copy assignment operator called" << std::endl;
+    // std::cout << "Copy assignment operator called" << std::endl;
     
     if(this != &copy) // It is check so that there is no self-assigment.
     {
@@ -47,7 +47,7 @@ Fixed& Fixed::operator=(const Fixed& copy) {
 
 //Destructor
 Fixed::~Fixed(){
-    std::cout << "Destructor called" << std::endl;
+    // std::cout << "Destructor called" << std::endl;
 }
 
 float Fixed::toFloat( void ) const{

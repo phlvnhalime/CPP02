@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:43:07 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/17 14:46:20 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:45:52 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
     I have to create a triangle and to be sure about each edge can not be same others
 */
 
+/*{Cross Product} = (x_a - x_p)(y_b - y_p) - (y_a - y_p)(x_b - x_p) 
+    If this formula is positive, a and b are different direction relative to point left and right of point
+    if it is negative, a and b are different direction of point
+    if it is zero, they are the same direction.
+*/
 static Fixed crossLine(Point const& a, Point const& b, Point const& point)
 {
     Fixed ax = a.getX() - point.getX();
@@ -52,11 +57,12 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
         return false;
 
     bool sideTwo = oppositeVertex(b,c,point,a);
-    if(!sideOne)
+    if(!sideTwo)
         return false;
     
     bool sideThree = oppositeVertex(c,a,point,b);
-    if(!sideOne)
+    if(!sideThree)
         return false;
+    return true;
 }
 
