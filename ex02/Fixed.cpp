@@ -6,7 +6,7 @@
 /*   By: hpehliva <hpehliva@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:09:29 by hpehliva          #+#    #+#             */
-/*   Updated: 2025/06/14 14:01:36 by hpehliva         ###   ########.fr       */
+/*   Updated: 2025/06/20 07:54:03 by hpehliva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,10 @@ Fixed Fixed::operator*(const Fixed& other) const{
 }
 
 Fixed Fixed::operator/(const Fixed& other) const{
+    if(other.PointValue == 0)
+    {
+        std::cerr << "Error: Division by zero" << std::endl;
+    }
     Fixed result;
     result.PointValue = (static_cast<long long>(this->PointValue) << fractionalBits) / other.PointValue;
     return result;
